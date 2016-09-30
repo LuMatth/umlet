@@ -20,6 +20,7 @@ import com.baselet.element.elementnew.uml.SyncBarHorizontal;
 import com.baselet.element.elementnew.uml.SyncBarVertical;
 import com.baselet.element.elementnew.uml.Timer;
 import com.baselet.element.elementnew.uml.UseCase;
+import com.baselet.element.nash.Command;
 import com.baselet.element.relation.Relation;
 
 public abstract class ElementFactory {
@@ -66,6 +67,8 @@ public abstract class ElementFactory {
 				return new Hierarchy();
 			case UMLSequenceAllInOne:
 				return new SequenceAllInOne();
+			case NASHCommand:
+				return new Command();
 			default:
 				throw new RuntimeException("Unknown class id: " + id);
 		}
