@@ -41,8 +41,8 @@ public class BranchLineFacet extends Facet {
 		drawer.drawLine(xPos.getRight() / 2.0f, d.getHeight(), xPos.getRight() - 1, 0.0);
 		state.increaseTextPrintPosition(Y_SPACE);
 
-		drawer.print("Ja", xPos.getLeft() + 2.5, d.getHeight() - 3.5, AlignHorizontal.LEFT);
-		drawer.print("Nein", xPos.getRight() - 3, d.getHeight() - 3.5, AlignHorizontal.RIGHT);
+		drawer.print("ja", xPos.getLeft() + 2.5, d.getHeight() - 3.5, AlignHorizontal.LEFT);
+		drawer.print("nein", xPos.getRight() - 3, d.getHeight() - 3.5, AlignHorizontal.RIGHT);
 
 		drawer.setLayer(Layer.Background);
 		drawer.setLineType(ltBefore);
