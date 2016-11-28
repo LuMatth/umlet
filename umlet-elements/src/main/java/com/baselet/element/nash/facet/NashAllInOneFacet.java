@@ -34,13 +34,21 @@ public class NashAllInOneFacet extends Facet {
 
 		double width = 10;
 		double height = 10;
+		if (!checkCorrectWhile(handledLines)) {
+			drawer.print("Error: Syntax for while-loop is not correct", state.getGridElementSize().width / 2.0, state.getTextPrintPosition() + drawer.getDistanceBorderToText() + drawer.textHeight("Error: Syntax for while-loop is not correct") + drawer.getDistanceBetweenTextLines(), AlignHorizontal.CENTER);
+			state.updateMinimumSize(drawer.textWidth("Error: Syntax for while-loop is not correct") * 1.5, drawer.textHeight("Error: Syntax for while-loop is not correct") * 3);
+
+			return;
+		}
 
 		for (String line : handledLines) {
 			width = Math.max(width, drawer.textWidth(line));
 			height += drawer.textHeight(line);
 
 			drawer.print(line, state.getGridElementSize().width / 2.0, state.getTextPrintPosition() + drawer.getDistanceBorderToText() + drawer.textHeight(line) + drawer.getDistanceBetweenTextLines(), AlignHorizontal.CENTER);
-			drawSeperatorLine(drawer, state);
+			if (!line.startsWith("\t")) {
+				drawSeperatorLine(drawer, state);
+			}
 
 			state.increaseTextPrintPosition(drawer.textHeight(line) * 3);
 		}
@@ -66,5 +74,21 @@ public class NashAllInOneFacet extends Facet {
 		drawer.drawLine(xPos.getLeft() + 0.5, linePos, xPos.getRight() - 1, linePos);
 		drawer.setLayer(Layer.Background);
 		drawer.setLineType(ltBefore);
+	}
+
+	public boolean checkCorrectWhile(List<String> lines) {
+		int countWhile = 0;
+		int countEndwhile = 0;
+
+		for (String line : lines) {
+			if (line.trim().equalsIgnoreCase("endwhile")) {
+				countEndwhile++;
+			}
+			if (line.trim().startsWith("while")) {
+				countWhile++;
+			}
+		}
+
+		return countWhile == countEndwhile;
 	}
 }
