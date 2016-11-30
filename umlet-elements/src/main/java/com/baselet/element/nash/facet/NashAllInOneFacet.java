@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.baselet.control.basics.XValues;
-import com.baselet.control.enums.AlignHorizontal;
+import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.LineType;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.diagram.draw.DrawHandler.Layer;
@@ -32,28 +32,13 @@ public class NashAllInOneFacet extends Facet {
 	public void parsingFinished(PropertiesParserState state, List<String> handledLines) {
 		DrawHandler drawer = state.getDrawer();
 
-		double width = 10;
-		double height = 10;
-		if (!checkCorrectWhile(handledLines)) {
-			drawer.print("Error: Syntax for while-loop is not correct", state.getGridElementSize().width / 2.0, state.getTextPrintPosition() + drawer.getDistanceBorderToText() + drawer.textHeight("Error: Syntax for while-loop is not correct") + drawer.getDistanceBetweenTextLines(), AlignHorizontal.CENTER);
-			state.updateMinimumSize(drawer.textWidth("Error: Syntax for while-loop is not correct") * 1.5, drawer.textHeight("Error: Syntax for while-loop is not correct") * 3);
+		// generate Diagram
+		NashDiagram dia = new NashDiagram(handledLines);
+		DimensionDouble dimension = dia.getDimension(drawer);
+		state.updateMinimumSize(dimension.getWidth(), dimension.getHeight());
+		dia.draw(drawer, state);
 
-			return;
-		}
-
-		for (String line : handledLines) {
-			width = Math.max(width, drawer.textWidth(line));
-			height += drawer.textHeight(line);
-
-			drawer.print(line, state.getGridElementSize().width / 2.0, state.getTextPrintPosition() + drawer.getDistanceBorderToText() + drawer.textHeight(line) + drawer.getDistanceBetweenTextLines(), AlignHorizontal.CENTER);
-			if (!line.startsWith("\t")) {
-				drawSeperatorLine(drawer, state);
-			}
-
-			state.increaseTextPrintPosition(drawer.textHeight(line) * 3);
-		}
-
-		state.updateMinimumSize(width * 1.5, height * 1.5);
+		/* double width = 10; double height = 0; if (!checkCorrectWhile(handledLines)) { drawer.print("Error: Syntax for while-loop is not correct", state.getGridElementSize().width / 2.0, state.getTextPrintPosition() + drawer.getDistanceBorderToText() + drawer.textHeight("Error: Syntax for while-loop is not correct") + drawer.getDistanceBetweenTextLines(), AlignHorizontal.CENTER); state.updateMinimumSize(drawer.textWidth("Error: Syntax for while-loop is not correct") * 1.5, drawer.textHeight("Error: Syntax for while-loop is not correct") * 3); return; } for (String line : handledLines) { width = Math.max(width, drawer.textWidth(line)); height += drawer.textHeight(line); drawer.print(line, state.getGridElementSize().width / 2.0, state.getTextPrintPosition() + drawer.getDistanceBorderToText() + drawer.textHeight(line) + drawer.getDistanceBetweenTextLines(), AlignHorizontal.CENTER); if (!line.startsWith("\t")) { drawSeperatorLine(drawer, state); } state.increaseTextPrintPosition(drawer.textHeight(line) * 3); } state.updateMinimumSize(width * 1.5, height * 1.5); */
 	}
 
 	@Override

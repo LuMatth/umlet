@@ -11,7 +11,6 @@ import com.baselet.element.facet.PropertiesParserState;
 import com.baselet.element.facet.Settings;
 import com.baselet.element.facet.common.FontSizeFacet;
 import com.baselet.element.facet.customdrawings.CustomDrawingFacet;
-import com.baselet.element.facet.specific.TemplateClassFacet;
 import com.baselet.element.nash.facet.NashAllInOneFacet;
 
 public class NashAllInOne extends NewGridElement {
@@ -43,7 +42,7 @@ public class NashAllInOne extends NewGridElement {
 
 			@Override
 			protected List<Facet> createFacets() {
-				return listOf(Settings.BASE, FontSizeFacet.INSTANCE, CustomDrawingFacet.INSTANCE, NashAllInOneFacet.INSTANCE, TemplateClassFacet.INSTANCE);
+				return listOf(Settings.BASE, FontSizeFacet.INSTANCE, CustomDrawingFacet.INSTANCE, NashAllInOneFacet.INSTANCE);
 			}
 		};
 	}
