@@ -13,14 +13,13 @@ public class BranchBlock implements Containable {
 		DimensionDouble left, right;
 		double width, height;
 
-		width = drawer.textWidth(condition) * 1.5;
-		height = drawer.textHeight(condition) * 1.5;
+		width = drawer.textWidth(condition) * 4;
+		height = drawer.textHeight(condition) * 4;
 
 		left = commandsTrue.calculateDimension(drawer);
 		right = commandsFalse.calculateDimension(drawer);
 
-		width = Math.max(width, Math.max(left.getWidth(), right.getWidth()));
-		height = Math.max(height, Math.max(left.getHeight(), right.getHeight()));
+		width = Math.max(width, Math.max(left.getWidth() * 2, right.getWidth() * 2));
 
 		return new DimensionDouble(width, height);
 	}
