@@ -57,21 +57,26 @@ public class NashContainer {
 
 				int b, x; // used to switch between true and false
 				int ignoreEnds = 0; // used to detect nested if statements
+				boolean skipSecondLoop = false;
 
 				for (b = i + 1; b < code.size(); b++) {
 					if (code.get(b).trim().startsWith("if")) {
 						ignoreEnds++;
 					}
-					if (code.get(b).trim().startsWith("else") && ignoreEnds == 0) {
+					if ((code.get(b).trim().startsWith("else") || code.get(b).trim().startsWith("endif")) && ignoreEnds == 0) {
 						break;
 					}
 					else if (code.get(b).trim().startsWith("else")) {
 						ignoreEnds--;
 					}
+					else if (code.get(b).trim().startsWith("endif")) {
+						skipSecondLoop = true;
+						break;
+					}
 					commandsTrue.add(code.get(b).trim());
 				}
 				ignoreEnds = 0;
-				for (x = b + 1; x < code.size(); x++) {
+				for (x = b + 1; !skipSecondLoop && x < code.size(); x++) {
 					if (code.get(x).trim().startsWith("if")) {
 						ignoreEnds++;
 					}
@@ -84,7 +89,7 @@ public class NashContainer {
 					commandsFalse.add(code.get(x).trim());
 				}
 				i = x;
-				blocks.add(new BranchBlock(line.substring(2), commandsTrue, commandsFalse));
+				blocks.add(new BranchBlock(line.substring(2).trim(), commandsTrue, commandsFalse));
 			}
 			else {
 				blocks.add(new CommandBlock(line));

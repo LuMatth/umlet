@@ -12,7 +12,7 @@ public class BranchBlock implements Containable {
 	private final NashContainer commandsTrue;
 	private final NashContainer commandsFalse;
 
-	private final double drawHeight = 70.0;
+	private final double drawHeight = 45.0;
 	private double height;
 
 	public BranchBlock(String condition, List<String> codeTrue, List<String> codeFalse) {
@@ -26,7 +26,7 @@ public class BranchBlock implements Containable {
 		DimensionDouble left, right;
 		double width;
 
-		width = drawer.textWidth(condition) * 2;
+		width = drawer.textWidth(condition) * 3;
 
 		left = commandsTrue.calculateDimension(drawer);
 		right = commandsFalse.calculateDimension(drawer);
@@ -51,8 +51,8 @@ public class BranchBlock implements Containable {
 
 		// print condition and true/false
 		drawer.print(condition, xOffset + (width - xOffset) / 2, yOffset + drawer.getDistanceBorderToText() + drawer.getDistanceBetweenTextLines() + drawer.textHeight(condition), AlignHorizontal.CENTER);
-		drawer.print("true", xOffset + 25.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
-		drawer.print("false", width - 25.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
+		drawer.print("true", xOffset + 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
+		drawer.print("false", width - 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
 		// print right and left Statements
 		commandsTrue.draw(drawer, state, xOffset, yOffset + drawHeight, width - (width - xOffset) / 2);
 		commandsFalse.draw(drawer, state, xOffset + (width - xOffset) / 2.0, yOffset + drawHeight, width);

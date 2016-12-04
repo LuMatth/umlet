@@ -8,7 +8,7 @@ import com.baselet.element.facet.PropertiesParserState;
 public class CommandBlock implements Containable {
 
 	private final String command;
-	private final double height = 35;
+	private final double height = 45;
 
 	public CommandBlock(String command) {
 		this.command = command;
