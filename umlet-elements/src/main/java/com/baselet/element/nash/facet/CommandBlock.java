@@ -8,7 +8,7 @@ import com.baselet.element.facet.PropertiesParserState;
 public class CommandBlock implements Containable {
 
 	private final String command;
-	private double height;
+	private final double height = 35;
 
 	public CommandBlock(String command) {
 		this.command = command;
@@ -16,7 +16,6 @@ public class CommandBlock implements Containable {
 
 	@Override
 	public DimensionDouble calculateDimension(DrawHandler drawer) {
-		height = (drawer.textHeight(command) + drawer.getDistanceBetweenTextLines() + drawer.getDistanceBorderToText()) * 1.5;
 		return new DimensionDouble(drawer.textWidth(command) * 1.5, height);
 	}
 
@@ -26,7 +25,7 @@ public class CommandBlock implements Containable {
 		drawer.drawLine(xOffset, yOffset + height, width, yOffset + height);
 		drawer.drawLine(xOffset, yOffset, xOffset, yOffset + height);
 		drawer.drawLine(width, yOffset, width, yOffset + height);
-		drawer.print(command, xOffset + (width - xOffset) / 2, yOffset + drawer.getDistanceBetweenTextLines() + drawer.getDistanceBorderToText() + drawer.textHeight(command), AlignHorizontal.CENTER);
+		drawer.print(command, xOffset + (width - xOffset) / 2, yOffset + drawer.getDistanceBorderToText() + height / 2.0, AlignHorizontal.CENTER);
 
 	}
 

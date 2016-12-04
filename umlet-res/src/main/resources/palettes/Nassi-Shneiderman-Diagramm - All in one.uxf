@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.1">
-  <zoom_level>8</zoom_level>
+<diagram program="umlet" version="14.3.0-SNAPSHOT">
+  <zoom_level>10</zoom_level>
   <element>
     <id>NASHAllInOne</id>
     <coordinates>
-      <x>624</x>
+      <x>10</x>
       <y>0</y>
-      <w>388</w>
-      <h>544</h>
+      <w>450</w>
+      <h>390</h>
     </coordinates>
-     <panel_attributes>
-     Test Text für jetzt bald algo
-     </panel_attributes>
+    <panel_attributes>Algorithm!
+if (this is an very interesting condition)
+	if (condition)
+		true
+		true
+	else
+		false
+	endif
+else
+	jaja
+	if (jaja)
+		jaja
+	else
+		jaja
+	endif
+	
+	bebe
+	cece
+	ce
+endif
+some more</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
