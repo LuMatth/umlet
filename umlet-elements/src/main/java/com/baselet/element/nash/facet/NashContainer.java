@@ -66,7 +66,7 @@ public class NashContainer {
 					if ((code.get(b).trim().startsWith("else") || code.get(b).trim().startsWith("endif")) && ignoreEnds == 0) {
 						break;
 					}
-					else if (code.get(b).trim().startsWith("else")) {
+					else if (code.get(b).trim().startsWith("else") || code.get(b).trim().startsWith("endif")) {
 						ignoreEnds--;
 					}
 					else if (code.get(b).trim().startsWith("endif")) {
