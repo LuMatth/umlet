@@ -63,16 +63,18 @@ public class NashContainer {
 					if (code.get(b).trim().startsWith("if")) {
 						ignoreEnds++;
 					}
-					if ((code.get(b).trim().startsWith("else") || code.get(b).trim().startsWith("endif")) && ignoreEnds == 0) {
+					if (code.get(b).trim().startsWith("else") && ignoreEnds == 0) {
 						break;
 					}
-					else if (code.get(b).trim().startsWith("else") || code.get(b).trim().startsWith("endif")) {
-						ignoreEnds--;
+					else if (code.get(b).trim().startsWith("endif") && ignoreEnds == 0) {
+						skipSecondLoop = true;
+						b--;
+						break;
 					}
 					else if (code.get(b).trim().startsWith("endif")) {
-						skipSecondLoop = true;
-						break;
+						ignoreEnds--;
 					}
+
 					commandsTrue.add(code.get(b).trim());
 				}
 				ignoreEnds = 0;
