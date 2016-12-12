@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0-SNAPSHOT">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>NASHAllInOne</id>
     <coordinates>
       <x>10</x>
-      <y>0</y>
-      <w>450</w>
-      <h>390</h>
+      <y>10</y>
+      <w>520</w>
+      <h>450</h>
     </coordinates>
-    <panel_attributes>Algorithm!
-if (this is an very interesting condition)
-	if (condition)
-		true
-		true
+    <panel_attributes>Eingabe: a_1,...,a_n
+
+z := 0
+g := 0
+i := 1
+
+do
+	if (a_i &gt; z)
+		g := z
+		z := a_i
 	else
-		false
+		if (z &gt;= a_i &gt; g)
+			g := a_i
+		endif
 	endif
-else
-	jaja
-	if (jaja)
-		jaja
-	else
-		jaja
-	endif
-	
-	bebe
-	cece
-	ce
-endif
-some more</panel_attributes>
+	i:=1+1
+dowhile i&lt;=n
+
+Ausgabe: g</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

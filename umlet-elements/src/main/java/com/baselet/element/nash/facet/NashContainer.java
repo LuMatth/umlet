@@ -48,8 +48,48 @@ public class NashContainer {
 			if (line.isEmpty()) {
 				continue;
 			}
-			if (line.startsWith("while")) {
-				// Ignore While at the moment!
+			if (line.startsWith("while ")) {
+				List<String> commands = new ArrayList<String>();
+				int ignoreEnds = 0;
+				int c;
+				for (c = i + 1; c < code.size(); c++) {
+					String parseLine = code.get(c).trim();
+					if (parseLine.startsWith("while ")) {
+						ignoreEnds++;
+					}
+					if (parseLine.equals("endwhile") && ignoreEnds == 0) {
+						break;
+					}
+					if (parseLine.equals("endwhile")) {
+						ignoreEnds--;
+					}
+					commands.add(parseLine);
+				}
+				i = c;
+				blocks.add(new WhileBlock(line, commands));
+				continue;
+			}
+			if (line.equals("do")) {
+				List<String> commands = new ArrayList<String>();
+				int ignoreEnds = 0;
+				int c;
+				for (c = i + 1; c < code.size(); c++) {
+					String parseLine = code.get(c).trim();
+					if (parseLine.equals("do")) {
+						ignoreEnds++;
+					}
+					if (parseLine.startsWith("dowhile ") && ignoreEnds == 0) {
+						line = parseLine.substring(2);
+						break;
+					}
+					if (parseLine.startsWith("dowhile ")) {
+						ignoreEnds--;
+					}
+					commands.add(parseLine);
+				}
+				i = c;
+				blocks.add(new DoWhileBlock(line, commands));
+				continue;
 			}
 			if (line.startsWith("if")) {
 				List<String> commandsTrue = new ArrayList<String>();
@@ -58,43 +98,47 @@ public class NashContainer {
 				int b, x; // used to switch between true and false
 				int ignoreEnds = 0; // used to detect nested if statements
 				boolean skipSecondLoop = false;
-
+				String parseLine;
 				for (b = i + 1; b < code.size(); b++) {
-					if (code.get(b).trim().startsWith("if")) {
+					parseLine = code.get(b).trim();
+					if (parseLine.startsWith("if")) {
 						ignoreEnds++;
 					}
-					if (code.get(b).trim().startsWith("else") && ignoreEnds == 0) {
+					if (parseLine.equals("else") && ignoreEnds == 0) {
 						break;
 					}
-					else if (code.get(b).trim().startsWith("endif") && ignoreEnds == 0) {
+					else if (parseLine.equals("endif") && ignoreEnds == 0) {
 						skipSecondLoop = true;
 						b--;
 						break;
 					}
-					else if (code.get(b).trim().startsWith("endif")) {
+					else if (parseLine.equals("endif")) {
 						ignoreEnds--;
 					}
 
-					commandsTrue.add(code.get(b).trim());
+					commandsTrue.add(parseLine);
 				}
 				ignoreEnds = 0;
 				for (x = b + 1; !skipSecondLoop && x < code.size(); x++) {
-					if (code.get(x).trim().startsWith("if")) {
+					parseLine = code.get(x).trim();
+					if (parseLine.startsWith("if")) {
 						ignoreEnds++;
 					}
-					if (code.get(x).trim().startsWith("endif") && ignoreEnds == 0) {
+					if (parseLine.equals("endif") && ignoreEnds == 0) {
 						break;
 					}
-					else if (code.get(x).trim().startsWith("endif")) {
+					else if (parseLine.equals("endif")) {
 						ignoreEnds--;
 					}
-					commandsFalse.add(code.get(x).trim());
+					commandsFalse.add(parseLine);
 				}
 				i = x;
 				blocks.add(new BranchBlock(line.substring(2).trim(), commandsTrue, commandsFalse));
+				continue;
 			}
 			else {
 				blocks.add(new CommandBlock(line));
+				continue;
 			}
 		}
 

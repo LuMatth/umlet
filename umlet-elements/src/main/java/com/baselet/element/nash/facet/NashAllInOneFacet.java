@@ -13,8 +13,6 @@ public class NashAllInOneFacet extends Facet {
 
 	public static final NashAllInOneFacet INSTANCE = new NashAllInOneFacet();
 
-	private static final double Y_SPACE = 5;
-
 	@Override
 	public boolean checkStart(String line, PropertiesParserState state) {
 		return true; // handle all lines
