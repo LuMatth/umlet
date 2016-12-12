@@ -21,6 +21,7 @@ import com.baselet.element.elementnew.uml.SyncBarVertical;
 import com.baselet.element.elementnew.uml.Timer;
 import com.baselet.element.elementnew.uml.UseCase;
 import com.baselet.element.nash.Command;
+import com.baselet.element.nash.NashAllInOne;
 import com.baselet.element.nash.WhileLoop;
 import com.baselet.element.relation.Relation;
 
@@ -72,6 +73,8 @@ public abstract class ElementFactory {
 				return new Command();
 			case NASHWhileLoop:
 				return new WhileLoop();
+			case NASHAllInOne:
+				return new NashAllInOne();
 			default:
 				throw new RuntimeException("Unknown class id: " + id);
 		}
