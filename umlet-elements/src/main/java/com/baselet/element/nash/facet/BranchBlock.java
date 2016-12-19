@@ -6,6 +6,7 @@ import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.element.facet.PropertiesParserState;
+import com.baselet.element.nash.facet.LanguageConfiguration.Language;
 
 public class BranchBlock implements Containable {
 	private final String condition;
@@ -51,8 +52,16 @@ public class BranchBlock implements Containable {
 
 		// print condition and true/false
 		drawer.print(condition, xOffset + (width - xOffset) / 2, yOffset + drawer.getDistanceBorderToText() + drawer.getDistanceBetweenTextLines() + drawer.textHeight(condition), AlignHorizontal.CENTER);
-		drawer.print("true", xOffset + 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
-		drawer.print("false", width - 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
+
+		if (LanguageConfiguration.INSTANCE.getLanguage() == Language.EN) {
+			drawer.print("true", xOffset + 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
+			drawer.print("false", width - 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
+		}
+		else if (LanguageConfiguration.INSTANCE.getLanguage() == Language.DE) {
+			drawer.print("Ja", xOffset + 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
+			drawer.print("Nein", width - 20.0, yOffset + drawHeight - 10.0, AlignHorizontal.CENTER);
+		}
+
 		// print right and left Statements
 		commandsTrue.draw(drawer, state, xOffset, yOffset + drawHeight, width - (width - xOffset) / 2);
 		commandsFalse.draw(drawer, state, xOffset + (width - xOffset) / 2.0, yOffset + drawHeight, width);

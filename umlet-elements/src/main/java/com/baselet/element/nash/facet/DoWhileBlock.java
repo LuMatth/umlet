@@ -6,10 +6,11 @@ import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.element.facet.PropertiesParserState;
+import com.baselet.element.nash.facet.LanguageConfiguration.Language;
 
 public class DoWhileBlock implements Containable {
 
-	private final String condition;
+	private String condition;
 	private final NashContainer commands;
 
 	private final double drawHeight = 45.0;
@@ -42,9 +43,16 @@ public class DoWhileBlock implements Containable {
 		drawer.drawLine(width, yOffset + height - drawHeight, width, yOffset + height);
 
 		// print Do and While
-		drawer.print(condition, xOffset + drawWidth / 2.0, yOffset + height - drawHeight + drawer.getDistanceBorderToText() * 2 + drawer.textHeight(condition) + drawer.getDistanceBetweenTextLines(), AlignHorizontal.LEFT);
-		drawer.print("do", xOffset + drawWidth / 3.0, yOffset + drawer.getDistanceBorderToText() + drawer.textHeight("do") + drawer.getDistanceBetweenTextLines() + height / 3.0, AlignHorizontal.LEFT);
+		if (LanguageConfiguration.INSTANCE.getLanguage() == Language.EN) {
+			drawer.print(condition, xOffset + drawWidth / 2.0, yOffset + height - drawHeight + drawer.getDistanceBorderToText() * 2 + drawer.textHeight(condition) + drawer.getDistanceBetweenTextLines(), AlignHorizontal.LEFT);
+			drawer.print("do", xOffset + drawWidth / 3.0, yOffset + drawer.getDistanceBorderToText() + drawer.textHeight("do") + drawer.getDistanceBetweenTextLines() + height / 3.0, AlignHorizontal.LEFT);
+		}
+		else if (LanguageConfiguration.INSTANCE.getLanguage() == Language.DE) {
+			condition = condition.replace("while", "solange");
+			drawer.print(condition, xOffset + drawWidth / 2.0, yOffset + height - drawHeight + drawer.getDistanceBorderToText() * 2 + drawer.textHeight(condition) + drawer.getDistanceBetweenTextLines(), AlignHorizontal.LEFT);
+			drawer.print("tue", xOffset + drawWidth / 3.0, yOffset + drawer.getDistanceBorderToText() + drawer.textHeight("do") + drawer.getDistanceBetweenTextLines() + height / 3.0, AlignHorizontal.LEFT);
 
+		}
 		commands.draw(drawer, state, xOffset + drawWidth, yOffset, width);
 
 	}
