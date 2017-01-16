@@ -16,10 +16,16 @@ public class NashDiagram {
 	boolean hasName;
 
 	public NashDiagram(List<String> code) {
-		if (code.size() >= 1 && code.get(0).startsWith("name=")) {
-			name = code.get(0).substring(5).trim();
+		int counter = 0;
+		for (counter = 0; counter < code.size(); counter++) {
+			if (!code.get(counter).isEmpty()) {
+				break;
+			}
+		}
+		if (code.size() >= 1 && code.get(counter).startsWith("name=")) {
+			name = code.get(counter).substring(5).trim();
 			hasName = true;
-			algorithm = new NashContainer(code.subList(1, code.size()));
+			algorithm = new NashContainer(code.subList(counter + 1, code.size()));
 		}
 		else {
 			algorithm = new NashContainer(code);
