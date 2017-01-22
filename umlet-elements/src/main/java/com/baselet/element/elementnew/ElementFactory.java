@@ -23,6 +23,7 @@ import com.baselet.element.elementnew.uml.UseCase;
 import com.baselet.element.nash.Command;
 import com.baselet.element.nash.NashAllInOne;
 import com.baselet.element.nash.WhileLoop;
+import com.baselet.element.pap.PapAllInOne;
 import com.baselet.element.relation.Relation;
 
 public abstract class ElementFactory {
@@ -75,6 +76,8 @@ public abstract class ElementFactory {
 				return new WhileLoop();
 			case NASHAllInOne:
 				return new NashAllInOne();
+			case PAPAllInOne:
+				return new PapAllInOne();
 			default:
 				throw new RuntimeException("Unknown class id: " + id);
 		}
