@@ -9,7 +9,9 @@
       <w>520</w>
       <h>450</h>
     </coordinates>
-    <panel_attributes>Eingabe: a_1,...,a_n
+    <panel_attributes>lang=de
+name=TestAlgorithmus
+Eingabe: a_1,...,a_n
 
 z := 0
 g := 0
