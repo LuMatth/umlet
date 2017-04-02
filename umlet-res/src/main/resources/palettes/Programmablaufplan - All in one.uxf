@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0-SNAPSHOT">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>PAPAllInOne</id>
+    <coordinates>
+      <x>10</x>
+      <y>10</y>
+      <w>520</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>lang=de
+name=TestAlgorithmus
+Eingabe: a_1,...,a_n
+
+z := 0
+g := 0
+i := 1
+
+do
+	if (a_i &gt; z)
+		g := z
+		z := a_i
+	else
+		if (z &gt;= a_i &gt; g)
+			g := a_i
+		endif
+	endif
+	i:=1+1
+dowhile i&lt;=n
+
+Ausgabe: g</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
