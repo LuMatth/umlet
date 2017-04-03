@@ -17,4 +17,13 @@ public class PapDrawer {
 		drawer.drawLine(x + ARROW_WIDTH / 2.0, y + length - ARROW_LENGTH, x, y + length);
 	}
 
+	public static void drawArrowLeft(DrawHandler drawer, PropertiesParserState state, double x, double y, double length) {
+		drawer.drawLine(x - length + ARROW_LENGTH, y, x, y);
+
+		// Draw Arrow Head
+		drawer.drawLine(x - length + ARROW_LENGTH, y - ARROW_WIDTH / 2.0, x - length + ARROW_LENGTH, y + ARROW_WIDTH / 2.0);
+		drawer.drawLine(x - length + ARROW_LENGTH, y - ARROW_WIDTH / 2.0, x - length, y);
+		drawer.drawLine(x - length + ARROW_LENGTH, y + ARROW_WIDTH / 2.0, x - length, y);
+	}
+
 }
