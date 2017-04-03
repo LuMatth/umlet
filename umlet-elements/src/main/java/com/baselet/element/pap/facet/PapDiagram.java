@@ -33,7 +33,7 @@ public class PapDiagram {
 		drawer.drawEllipse(dimension.getWidth() / 2.0 - ellipseDim, 0, ellipseDim * 2, ellipseDim);
 		drawer.print("Start", dimension.getWidth() / 2.0, ellipseDim / 2.0 + drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
 		algorithm.draw(drawer, state, dimension.getWidth() / 2.0, ellipseDim, dimension.getWidth());
-		PapDrawer.drawArrowDown(drawer, state, dimension.getWidth() / 2.0, dimension.getHeight() - arrowLength - ellipseDim, arrowLength);
+		PapDrawer.drawArrowDown(drawer, dimension.getWidth() / 2.0, dimension.getHeight() - arrowLength - ellipseDim, arrowLength);
 		drawer.drawEllipse(dimension.getWidth() / 2.0 - ellipseDim, dimension.getHeight() - ellipseDim, ellipseDim * 2.0, ellipseDim);
 		drawer.print("End", dimension.getWidth() / 2.0, dimension.getHeight() - ellipseDim / 2.0 + drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
 	}

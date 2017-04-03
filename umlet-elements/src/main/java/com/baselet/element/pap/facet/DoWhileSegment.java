@@ -18,7 +18,7 @@ public class DoWhileSegment implements Containable {
 	private final double condition_min_width = 40;
 	private final double condition_scale_factor = 25.0;
 	private final double arrowLength = 40;
-	private final double loopWidth = 40;
+	private final double loopWidth = 10;
 
 	private double height = 0;
 	private double width = 0;
@@ -42,7 +42,8 @@ public class DoWhileSegment implements Containable {
 	@Override
 	public void draw(DrawHandler drawer, PropertiesParserState state, double xOffset, double yOffset, double w) {
 		commands.draw(drawer, state, xOffset, yOffset, width);
-		drawer.drawLine(xOffset, yOffset + height - arrowLength - condition_height, xOffset, yOffset + height - condition_height);
+
+		PapDrawer.drawArrowDown(drawer, xOffset, yOffset + height - condition_height - arrowLength, arrowLength);
 		drawer.print(condition, xOffset, yOffset + height - condition_height / 2.0 + drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
 
 		// draw Diamond
@@ -54,7 +55,7 @@ public class DoWhileSegment implements Containable {
 		// draw arrow to the start of the loop
 		drawer.drawLine(xOffset + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) / 2.0, yOffset + height - condition_height / 2.0, xOffset + width, yOffset + height - condition_height / 2.0);
 		drawer.drawLine(xOffset + width, yOffset + height - condition_height / 2.0, xOffset + width, yOffset + arrowLength / 2.0);
-		PapDrawer.drawArrowLeft(drawer, state, xOffset + width, yOffset + arrowLength / 2.0, width);
+		PapDrawer.drawArrowLeft(drawer, xOffset + width, yOffset + arrowLength / 2.0, width);
 
 		// print true and false
 		drawer.print("true", xOffset + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) + drawer.getDistanceBorderToText() * 2, yOffset + height - condition_height / 2.0 - drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);

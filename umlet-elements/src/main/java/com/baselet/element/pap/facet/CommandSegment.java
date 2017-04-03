@@ -24,7 +24,7 @@ public class CommandSegment implements Containable {
 
 	@Override
 	public void draw(DrawHandler drawer, PropertiesParserState state, double xOffset, double yOffset, double width) {
-		PapDrawer.drawArrowDown(drawer, state, xOffset, yOffset, arrowLength);
+		PapDrawer.drawArrowDown(drawer, xOffset, yOffset, arrowLength);
 		drawer.drawRectangle(xOffset - drawer.textWidth(command) * 1.5 / 2.0, yOffset + arrowLength, drawer.textWidth(command) * 1.5, height);
 		drawer.print(command, xOffset, yOffset + arrowLength + height / 2.0 + drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
 	}
