@@ -68,8 +68,8 @@ public class BranchSegment implements Containable {
 			drawer.print("true", xOffset + drawer.textWidth("true"), yOffset + arrowLength + condition_height + arrowLength / 2.0, AlignHorizontal.CENTER);
 		}
 		else if (LanguageConfiguration.INSTANCE.getLanguage() == Language.DE) {
-			drawer.print("falsch", xOffset + conditionWidth + 15, yOffset + arrowLength + condition_height / 2.0 - drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
-			drawer.print("wahr", xOffset + drawer.textWidth("wahr"), yOffset + arrowLength + condition_height + arrowLength / 2.0, AlignHorizontal.CENTER);
+			drawer.print("Nein", xOffset + conditionWidth + 15, yOffset + arrowLength + condition_height / 2.0 - drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
+			drawer.print("Ja", xOffset + drawer.textWidth("Ja"), yOffset + arrowLength + condition_height + arrowLength / 2.0, AlignHorizontal.CENTER);
 		}
 		// draw connecting lines
 		drawer.drawLine(xOffset + conditionWidth, yOffset + arrowLength + condition_height / 2.0, xOffset + spacer, yOffset + arrowLength + condition_height / 2.0); // to False seqeuence
