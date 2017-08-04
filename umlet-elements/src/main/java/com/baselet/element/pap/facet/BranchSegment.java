@@ -48,7 +48,7 @@ public class BranchSegment implements Containable {
 	}
 
 	@Override
-	public void draw(DrawHandler drawer, PropertiesParserState state, double xOffset, double yOffset, double width) {
+	public void draw(DrawHandler drawer, PropertiesParserState state, double xOffset, double yOffset, double w) {
 		PapDrawer.drawArrowDown(drawer, xOffset, yOffset, arrowLength);
 		drawer.print(condition, xOffset, yOffset + arrowLength + condition_height / 2.0 + drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
 
@@ -59,8 +59,8 @@ public class BranchSegment implements Containable {
 		drawer.drawLine(xOffset - conditionWidth, yOffset + arrowLength + condition_height / 2.0, xOffset, yOffset + arrowLength + condition_height);
 		drawer.drawLine(xOffset, yOffset + arrowLength + condition_height, xOffset + conditionWidth, yOffset + arrowLength + condition_height / 2.0);
 
-		commandsTrue.draw(drawer, state, xOffset, yOffset + arrowLength + condition_height, width);
-		commandsFalse.draw(drawer, state, xOffset + spacer, yOffset + arrowLength + condition_height / 2.0, width);
+		commandsTrue.draw(drawer, state, xOffset, yOffset + arrowLength + condition_height, w);
+		commandsFalse.draw(drawer, state, xOffset + spacer, yOffset + arrowLength + condition_height / 2.0, w);
 
 		// print true and false
 		if (LanguageConfiguration.INSTANCE.getLanguage() == Language.EN) {

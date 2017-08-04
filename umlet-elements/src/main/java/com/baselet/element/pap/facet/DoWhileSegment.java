@@ -20,7 +20,7 @@ public class DoWhileSegment implements Containable {
 	private final double condition_min_width = 70;
 	private final double condition_scale_factor = 25.0;
 	private final double arrowLength = 40;
-	private final double loopWidth = 5;
+	private final double loopWidth = 2;
 
 	private double height = 0;
 	private double width = 0;
