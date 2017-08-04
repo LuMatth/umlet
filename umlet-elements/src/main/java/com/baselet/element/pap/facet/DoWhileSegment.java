@@ -61,12 +61,12 @@ public class DoWhileSegment implements Containable {
 
 		// print true and false
 		if (LanguageConfiguration.INSTANCE.getLanguage() == Language.EN) {
-			drawer.print("true", xOffset + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) + drawer.getDistanceBorderToText() * 2, yOffset + height - condition_height / 2.0 - drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
-			drawer.print("false", xOffset + drawer.textWidth("false"), yOffset + height + arrowLength / 2.0, AlignHorizontal.CENTER);
+			drawer.print("true", xOffset + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) + drawer.getDistanceBorderToText(), yOffset + height - condition_height / 2.0, AlignHorizontal.CENTER);
+			drawer.print("false", xOffset + drawer.textWidth("false") / 2.0, yOffset + height + arrowLength / 3.0, AlignHorizontal.CENTER);
 		}
 		else if (LanguageConfiguration.INSTANCE.getLanguage() == Language.DE) {
-			drawer.print("Ja", xOffset + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) + drawer.getDistanceBorderToText() * 2, yOffset + height - condition_height / 2.0 - drawer.getDistanceBorderToText(), AlignHorizontal.CENTER);
-			drawer.print("Nein", xOffset + drawer.textWidth("falsch"), yOffset + height + arrowLength / 2.0, AlignHorizontal.CENTER);
+			drawer.print("Ja", xOffset + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) + drawer.getDistanceBorderToText(), yOffset + height - condition_height / 2.0, AlignHorizontal.CENTER);
+			drawer.print("Nein", xOffset + drawer.textWidth("falsch") / 2.0, yOffset + height + arrowLength / 3.0, AlignHorizontal.CENTER);
 		}
 	}
 

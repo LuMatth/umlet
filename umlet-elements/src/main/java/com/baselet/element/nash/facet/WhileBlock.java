@@ -26,7 +26,7 @@ public class WhileBlock implements Containable {
 	public DimensionDouble calculateDimension(DrawHandler drawer) {
 		DimensionDouble dimension = commands.calculateDimension(drawer);
 
-		double width = dimension.getWidth() + drawWidth;
+		double width = dimension.getWidth() + drawWidth + drawer.textWidth(condition.replace("while", "solange"));
 		height = dimension.getHeight() + drawHeight;
 
 		return new DimensionDouble(width, height);

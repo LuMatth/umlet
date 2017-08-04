@@ -29,6 +29,9 @@ do
 	i:=1+1
 dowhile i&lt;=n
 
+while (getchar() != null)
+	wait()
+endwhile
 Ausgabe: g</panel_attributes>
     <additional_attributes/>
   </element>
