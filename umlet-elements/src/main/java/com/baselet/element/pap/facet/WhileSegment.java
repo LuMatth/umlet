@@ -72,9 +72,9 @@ public class WhileSegment implements Containable {
 		PapDrawer.drawArrowLeft(drawer, xOffset + width, yOffset + arrowLength / 2.0, width);
 
 		// arrow to the end
-		drawer.drawLine(xOffset - conditionWidth, yOffset + arrowLength + condition_height / 2.0, xOffset - conditionWidth - width + 5, yOffset + arrowLength + condition_height / 2.0);
-		drawer.drawLine(xOffset - conditionWidth - width + 5, yOffset + arrowLength + condition_height / 2.0, xOffset - conditionWidth - width + 5, yOffset + height - bottomSpacer * 0.2);
-		drawer.drawLine(xOffset - conditionWidth - width + 5, yOffset + height - bottomSpacer * 0.2, xOffset, yOffset + height - bottomSpacer * 0.2);
+		drawer.drawLine(xOffset - conditionWidth, yOffset + arrowLength + condition_height / 2.0, xOffset - width, yOffset + arrowLength + condition_height / 2.0);
+		drawer.drawLine(xOffset - width, yOffset + arrowLength + condition_height / 2.0, xOffset - width, yOffset + height - bottomSpacer * 0.2);
+		drawer.drawLine(xOffset - width, yOffset + height - bottomSpacer * 0.2, xOffset, yOffset + height - bottomSpacer * 0.2);
 		drawer.drawLine(xOffset, yOffset + height - bottomSpacer * 0.2, xOffset, yOffset + height);
 
 	}
