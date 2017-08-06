@@ -16,13 +16,13 @@ public class WhileSegment implements Containable {
 	private final String condition;
 	private final PapContainer commands;
 
-	private final double condition_height = 70;
 	private final double condition_min_width = 70;
 	private final double condition_scale_factor = 25.0;
 	private final double arrowLength = 40;
 	private final double loopWidth = 2;
 	private final double bottomSpacer = 50;
 
+	private double condition_height = 0;
 	private double height = 0;
 	private double width = 0;
 
@@ -36,6 +36,7 @@ public class WhileSegment implements Containable {
 		DimensionDouble dimension = commands.calculateDimension(drawer);
 
 		width = dimension.getWidth() + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) + loopWidth;
+		condition_height = Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor);
 		height = dimension.getHeight() + arrowLength + condition_height + bottomSpacer;
 
 		return new DimensionDouble(width * 2, height);

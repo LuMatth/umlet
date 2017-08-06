@@ -17,12 +17,12 @@ public class BranchSegment implements Containable {
 	private final PapContainer commandsTrue;
 	private final PapContainer commandsFalse;
 
-	private final double condition_height = 70;
 	private final double condition_min_width = 70;
 	private final double condition_scale_factor = 25.0;
 	private final double arrowLength = 40;
 	private final double bottomSpacer = 10;
 
+	private double condition_height = 0;
 	private double spacer = 0;
 	private double height = 0;
 	private double width = 0;
@@ -40,6 +40,7 @@ public class BranchSegment implements Containable {
 
 		spacer = dimensionT.getWidth() + dimensionF.getWidth() / 2.0 + Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor) / 2.0;
 		width = dimensionT.getWidth() + dimensionF.getWidth() * 2.0 + spacer;
+		condition_height = Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor);
 		double tHeight = dimensionT.getHeight() + arrowLength + condition_height;
 		double fHeight = dimensionF.getHeight() + arrowLength + condition_height;
 		height = Math.max(tHeight, fHeight) + bottomSpacer;
