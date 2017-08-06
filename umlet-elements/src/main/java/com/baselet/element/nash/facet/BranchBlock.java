@@ -27,7 +27,7 @@ public class BranchBlock implements Containable {
 		DimensionDouble left, right;
 		double width;
 
-		width = drawer.textWidth(condition) * 3;
+		width = Math.max(150, drawer.textWidth(condition) * 3);
 
 		left = commandsTrue.calculateDimension(drawer);
 		right = commandsFalse.calculateDimension(drawer);
