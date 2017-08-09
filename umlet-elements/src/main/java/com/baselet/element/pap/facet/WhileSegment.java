@@ -6,9 +6,9 @@ import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.element.facet.PropertiesParserState;
+import com.baselet.element.language.LanguageConfiguration;
+import com.baselet.element.language.LanguageConfiguration.Language;
 import com.baselet.element.nash.facet.Containable;
-import com.baselet.element.nash.facet.LanguageConfiguration;
-import com.baselet.element.nash.facet.LanguageConfiguration.Language;
 import com.baselet.element.pap.helper.PapDrawer;
 
 public class WhileSegment implements Containable {
@@ -39,7 +39,8 @@ public class WhileSegment implements Containable {
 		condition_height = Math.max(condition_min_width, drawer.textWidth(condition) + condition_scale_factor);
 		height = dimension.getHeight() + arrowLength + condition_height + bottomSpacer;
 
-		return new DimensionDouble(width * 2, height);
+		return new DimensionDouble(width * 2, height); // die Verdoppelung der Breite ist nötig, da die Diagramme in der Mitte gezeichnet werden,
+														// die Breite aber von der linken Seite aus angegeben ist.
 	}
 
 	@Override

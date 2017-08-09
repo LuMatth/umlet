@@ -1,4 +1,4 @@
-package com.baselet.element.nash.facet;
+package com.baselet.element.language;
 
 public class LanguageConfiguration {
 

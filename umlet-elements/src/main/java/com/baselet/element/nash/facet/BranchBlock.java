@@ -6,7 +6,8 @@ import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.element.facet.PropertiesParserState;
-import com.baselet.element.nash.facet.LanguageConfiguration.Language;
+import com.baselet.element.language.LanguageConfiguration;
+import com.baselet.element.language.LanguageConfiguration.Language;
 
 public class BranchBlock implements Containable {
 	private final String condition;
