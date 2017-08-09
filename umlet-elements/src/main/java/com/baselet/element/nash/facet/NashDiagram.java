@@ -22,8 +22,8 @@ public class NashDiagram {
 				break;
 			}
 		}
-		if (code.size() >= 1 && code.get(counter).startsWith("name=")) {
-			name = code.get(counter).substring(5).trim();
+		if (code.size() >= 1 && code.get(counter).replaceAll(" ", "").startsWith("name=")) {
+			name = code.get(counter).substring(code.get(counter).indexOf('=') + 1).trim();
 			hasName = true;
 			algorithm = new NashContainer(code.subList(counter + 1, code.size()));
 		}
@@ -36,7 +36,7 @@ public class NashDiagram {
 	public DimensionDouble getDimension(DrawHandler drawer) {
 		dimension = algorithm.calculateDimension(drawer);
 		if (hasName) {
-			dimension = new DimensionDouble(dimension.getWidth(), dimension.getHeight() + 45.0);
+			dimension = new DimensionDouble(Math.max(drawer.textWidth(name), dimension.getWidth()), dimension.getHeight() + 45.0);
 		}
 		return dimension;
 	}
