@@ -1,8 +1,8 @@
-package com.baselet.element.nash.facet;
+package com.baselet.element.language;
 
 import com.baselet.element.facet.FirstRunKeyValueFacet;
 import com.baselet.element.facet.PropertiesParserState;
-import com.baselet.element.nash.facet.LanguageConfiguration.Language;
+import com.baselet.element.language.LanguageConfiguration.Language;
 
 public class LanguageFacet extends FirstRunKeyValueFacet {
 

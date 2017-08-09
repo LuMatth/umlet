@@ -6,7 +6,8 @@ import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.element.facet.PropertiesParserState;
-import com.baselet.element.nash.facet.LanguageConfiguration.Language;
+import com.baselet.element.language.LanguageConfiguration;
+import com.baselet.element.language.LanguageConfiguration.Language;
 
 public class BranchBlock implements Containable {
 	private final String condition;
@@ -27,7 +28,7 @@ public class BranchBlock implements Containable {
 		DimensionDouble left, right;
 		double width;
 
-		width = drawer.textWidth(condition) * 3;
+		width = Math.max(150, drawer.textWidth(condition) * 3);
 
 		left = commandsTrue.calculateDimension(drawer);
 		right = commandsFalse.calculateDimension(drawer);

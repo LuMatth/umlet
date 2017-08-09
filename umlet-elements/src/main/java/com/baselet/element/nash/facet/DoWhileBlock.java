@@ -6,7 +6,8 @@ import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.element.facet.PropertiesParserState;
-import com.baselet.element.nash.facet.LanguageConfiguration.Language;
+import com.baselet.element.language.LanguageConfiguration;
+import com.baselet.element.language.LanguageConfiguration.Language;
 
 public class DoWhileBlock implements Containable {
 
@@ -27,7 +28,7 @@ public class DoWhileBlock implements Containable {
 	public DimensionDouble calculateDimension(DrawHandler drawer) {
 		DimensionDouble dimension = commands.calculateDimension(drawer);
 
-		double width = dimension.getWidth() + drawWidth;
+		double width = dimension.getWidth() + drawWidth + drawer.textWidth(condition.replace("while", "solange"));
 		height = dimension.getHeight() + drawHeight;
 
 		return new DimensionDouble(width, height);

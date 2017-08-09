@@ -10,6 +10,7 @@ import com.baselet.element.facet.Facet;
 import com.baselet.element.facet.PropertiesParserState;
 import com.baselet.element.facet.Settings;
 import com.baselet.element.facet.customdrawings.CustomDrawingFacet;
+import com.baselet.element.language.LanguageFacet;
 import com.baselet.element.pap.facet.PapAllInOneFacet;
 
 public class PapAllInOne extends NewGridElement {
@@ -41,7 +42,7 @@ public class PapAllInOne extends NewGridElement {
 
 			@Override
 			protected List<Facet> createFacets() {
-				return listOf(Settings.BASE, CustomDrawingFacet.INSTANCE, PapAllInOneFacet.INSTANCE);
+				return listOf(Settings.BASE, CustomDrawingFacet.INSTANCE, PapAllInOneFacet.INSTANCE, LanguageFacet.INSTANCE);
 			}
 		};
 	}

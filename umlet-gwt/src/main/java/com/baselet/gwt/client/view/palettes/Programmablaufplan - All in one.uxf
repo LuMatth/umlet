@@ -2,7 +2,7 @@
 <diagram program="umlet" version="14.3.0-SNAPSHOT">
   <zoom_level>7</zoom_level>
   <element>
-    <id>NASHAllInOne</id>
+    <id>PAPAllInOne</id>
     <coordinates>
       <x>10</x>
       <y>10</y>
@@ -10,7 +10,6 @@
       <h>450</h>
     </coordinates>
     <panel_attributes>lang=de
-name=TestAlgorithmus
 Eingabe: a_1,...,a_n
 
 z := 0
@@ -32,6 +31,7 @@ dowhile i&lt;=n
 while (getchar() != null)
 	wait()
 endwhile
+
 Ausgabe: g</panel_attributes>
     <additional_attributes/>
   </element>

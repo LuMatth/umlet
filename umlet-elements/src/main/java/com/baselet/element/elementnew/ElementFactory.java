@@ -20,9 +20,7 @@ import com.baselet.element.elementnew.uml.SyncBarHorizontal;
 import com.baselet.element.elementnew.uml.SyncBarVertical;
 import com.baselet.element.elementnew.uml.Timer;
 import com.baselet.element.elementnew.uml.UseCase;
-import com.baselet.element.nash.Command;
 import com.baselet.element.nash.NashAllInOne;
-import com.baselet.element.nash.WhileLoop;
 import com.baselet.element.pap.PapAllInOne;
 import com.baselet.element.relation.Relation;
 
@@ -70,10 +68,6 @@ public abstract class ElementFactory {
 				return new Hierarchy();
 			case UMLSequenceAllInOne:
 				return new SequenceAllInOne();
-			case NASHCommand:
-				return new Command();
-			case NASHWhileLoop:
-				return new WhileLoop();
 			case NASHAllInOne:
 				return new NashAllInOne();
 			case PAPAllInOne:

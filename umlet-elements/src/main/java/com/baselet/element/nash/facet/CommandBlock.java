@@ -16,7 +16,7 @@ public class CommandBlock implements Containable {
 
 	@Override
 	public DimensionDouble calculateDimension(DrawHandler drawer) {
-		return new DimensionDouble(drawer.textWidth(command) * 1.5, height);
+		return new DimensionDouble(Math.max(100, drawer.textWidth(command) * 1.5), height);
 	}
 
 	@Override

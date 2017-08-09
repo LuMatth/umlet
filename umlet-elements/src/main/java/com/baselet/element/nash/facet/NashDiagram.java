@@ -43,7 +43,7 @@ public class NashDiagram {
 
 	public void draw(DrawHandler drawer, PropertiesParserState state) {
 		double yOffset = 0;
-
+		drawer.setFontSize(14);
 		if (hasName) {
 			drawer.print(name, 0, 45.0 / 2.0 + drawer.getDistanceBorderToText() + drawer.textHeight(name), AlignHorizontal.LEFT);
 			yOffset += 45.0;

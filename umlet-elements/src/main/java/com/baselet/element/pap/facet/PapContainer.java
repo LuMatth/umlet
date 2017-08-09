@@ -67,7 +67,7 @@ public class PapContainer {
 					commands.add(parseLine);
 				}
 				i = c;
-				blocks.add(new WhileSegment(line, commands));
+				blocks.add(new WhileSegment(line.substring(6), commands));
 				continue;
 			}
 			if (line.equals("do")) {
@@ -80,7 +80,7 @@ public class PapContainer {
 						ignoreEnds++;
 					}
 					if (parseLine.startsWith("dowhile ") && ignoreEnds == 0) {
-						line = parseLine.substring(2);
+						line = parseLine.substring(8);
 						break;
 					}
 					if (parseLine.startsWith("dowhile ")) {

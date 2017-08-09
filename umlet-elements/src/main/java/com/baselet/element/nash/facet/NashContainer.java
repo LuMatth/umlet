@@ -69,7 +69,28 @@ public class NashContainer {
 				blocks.add(new WhileBlock(line, commands));
 				continue;
 			}
-			if (line.equals("do")) {
+			else if (line.startsWith("for ")) {
+				List<String> commands = new ArrayList<String>();
+				int ignoreEnds = 0;
+				int c;
+				for (c = i + 1; c < code.size(); c++) {
+					String parseLine = code.get(c).trim();
+					if (parseLine.startsWith("for ")) {
+						ignoreEnds++;
+					}
+					if (parseLine.equals("endfor") && ignoreEnds == 0) {
+						break;
+					}
+					if (parseLine.equals("endfor")) {
+						ignoreEnds--;
+					}
+					commands.add(parseLine);
+				}
+				i = c;
+				blocks.add(new ForBlock(line, commands));
+				continue;
+			}
+			else if (line.equals("do")) {
 				List<String> commands = new ArrayList<String>();
 				int ignoreEnds = 0;
 				int c;
@@ -91,7 +112,7 @@ public class NashContainer {
 				blocks.add(new DoWhileBlock(line, commands));
 				continue;
 			}
-			if (line.startsWith("if")) {
+			else if (line.startsWith("if")) {
 				List<String> commandsTrue = new ArrayList<String>();
 				List<String> commandsFalse = new ArrayList<String>();
 
