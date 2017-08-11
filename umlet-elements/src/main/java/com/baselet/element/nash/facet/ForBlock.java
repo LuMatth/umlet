@@ -6,9 +6,11 @@ import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.diagram.draw.DrawHandler;
 import com.baselet.element.facet.PropertiesParserState;
+import com.baselet.element.language.LanguageConfiguration;
+import com.baselet.element.language.LanguageConfiguration.Language;
 
 public class ForBlock implements Containable {
-	private final String condition;
+	private String condition;
 	private final NashContainer commands;
 
 	private final double drawHeight = 45.0;
@@ -40,8 +42,11 @@ public class ForBlock implements Containable {
 		drawer.drawLine(xOffset + drawWidth, yOffset + drawHeight, xOffset + drawWidth, yOffset + height);
 		drawer.drawLine(xOffset + drawWidth, yOffset + height, xOffset, yOffset + height);
 
+		if (LanguageConfiguration.INSTANCE.getLanguage() == Language.EN) {}
+		else if (LanguageConfiguration.INSTANCE.getLanguage() == Language.DE) {
+			condition = condition.replace("for", "für");
+		}
 		drawer.print(condition, xOffset + drawWidth / 2.0, yOffset + drawer.getDistanceBorderToText() * 2 + drawer.textHeight(condition) + drawer.getDistanceBetweenTextLines(), AlignHorizontal.LEFT);
-
 		commands.draw(drawer, state, xOffset + drawWidth, yOffset + drawHeight, width);
 
 	}
